@@ -5,5 +5,12 @@
 	"id": "petitfrapo.nomoregrayfilter",
 	"name": "NoMoreGrayFilter",
 	"developer": "PetitFrapo",
-	"description": "Removes the filthy gray filter from the Event, Map and Versus button. Should be compatible with any mod, but please report any issue on the GitHub repo. Cosmetic only of course."
+	"description": "Removes the filthy gray filter from the Event, Map and Versus button. Should be compatible with any mod, but please report any issue on the GitHub repo. Cosmetic only of course.",
+	"dependencies": [
+        {
+            "id": "geode.node-ids",
+            "version": "v1.7.0",
+            "importance": "required"
+        }
+    ]
 }
