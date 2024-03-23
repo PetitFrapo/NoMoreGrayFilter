@@ -30,15 +30,23 @@ class $modify(CreatorLayer) {
 		CCMenuItemSpriteExtra * btns[3] = {eventBtn, mapBtn, versusBtn};
 		for (int i = 0; i < 3; i++) {
 
+			auto superExpertLoaded = ((i = 2) && (Loader::get()->isModLoaded("xanii.super_expert")));
+
 			auto btn = menu->getChildByID(ids[i]);
 			auto evx = btn->getPositionX();
 			auto evy = btn->getPositionY();
-			btn->removeFromParent();
+
+			if (!superExpertLoaded) {
+				btn->removeFromParent();
+			}
 
 			auto saidBtn = btns[i];
 			saidBtn->setID(ids[i]);
 			saidBtn->setPosition({ evx, evy });
-			menu->addChild(saidBtn);
+
+			if (!superExpertLoaded) {
+				menu->addChild(saidBtn);
+			};
 
 		}
 		return true;

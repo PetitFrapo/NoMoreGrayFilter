@@ -1,7 +1,7 @@
 {
 	"geode": "2.0.0-beta.21",
 	"gd": "2.204",
-	"version": "v1.0.0",
+	"version": "v1.0.3",
 	"id": "petitfrapo.nomoregrayfilter",
 	"name": "NoMoreGrayFilter",
 	"developer": "PetitFrapo",
@@ -9,8 +9,16 @@
 	"dependencies": [
         {
             "id": "geode.node-ids",
-            "version": "v1.7.0",
+            "version": "v1.8.1",
             "importance": "required"
         }
-    ]
+    ],
+	"incompatibilities": [
+		{
+			"id": "capeling.goodbye_unnecessary_buttons",
+			"version": "*",
+			"importance": "breaking"
+		}
+	],
+	"repository": "https://github.com/petitfrapo/nomoregrayfilter"
 }
