@@ -1,7 +1,7 @@
 # NoMoreGrayFilter
 
 ## Important notice!
-I pushed version 1.0.3 to the Geode indexer, but it contained a bug making it not work. I have since released an update, that is yet to be accepted. It should be accepted later today. If you really want the buttons you can download the mod in the releases tab and put it in `\<gd folder\>\geode\mods` and it should work.
+I pushed version 1.0.3 to the Geode indexer, but it contained a bug making it not work. I have since released an update, that is yet to be accepted. It should be accepted later today. If you really want the buttons you can download the mod in the releases tab and put it in `<gd folder>\geode\mods` and it should work.
 
 ---
 
