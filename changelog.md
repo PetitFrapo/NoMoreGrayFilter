@@ -1,3 +1,7 @@
+# v1.1.2
+
+* Update to Geode 3.0.0-beta.2.
+
 # v1.1.1
 
 * Adjusted the scale of the buttons to work with any resolution.
