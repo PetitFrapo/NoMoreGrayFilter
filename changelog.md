@@ -1,3 +1,7 @@
+# v1.1.3
+
+* Update to Geode 3.0.0. I have no idea if this is useful or not but I'm doing it anyway.
+
 # v1.1.2
 
 * Update to Geode 3.0.0-beta.2.

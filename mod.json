@@ -1,11 +1,11 @@
 {
-	"geode": "3.0.0-beta.2",
+	"geode": "3.0.0",
 	"gd": {
         "mac": "2.200",
         "android": "2.206",
         "win": "2.206"
     },
-	"version": "v1.1.2",
+	"version": "v1.1.3",
 	"id": "petitfrapo.nomoregrayfilter",
 	"name": "NoMoreGrayFilter",
 	"developer": "PetitFrapo",
