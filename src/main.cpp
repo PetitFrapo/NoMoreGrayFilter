@@ -3,8 +3,9 @@
 using namespace geode::prelude;
 
 #include <Geode/modify/CreatorLayer.hpp>
+#include <Geode/binding/CCMenuItemSpriteExtra.hpp>
 class $modify(CreatorLayer) {
-	
+
 	bool init() {
 
 		if (!CreatorLayer::init()) {
@@ -15,48 +16,42 @@ class $modify(CreatorLayer) {
 		auto menu = this->getChildByID("creator-buttons-menu");
 
 		// Get the correct scale for the resolution.
-		auto scaleToUse = getChildOfType<CCSprite>(getChildOfType<CCMenuItemSpriteExtra>(menu, 0), 0)->getScale();
+		//auto scaleToUse = getChildOfType<CCSprite>(getChildOfType<CCMenuItemSpriteExtra>(menu, 0), 0)->getScale();
 
 		// Create the sprites for the buttons.
 		auto sprev = CCSprite::createWithSpriteFrameName("GJ_eventBtn_001.png");
-		sprev->setScale(scaleToUse);
-
 		auto sprmap = CCSprite::createWithSpriteFrameName("GJ_mapBtn_001.png");
-		sprmap->setScale(scaleToUse);
-
 		auto sprvers = CCSprite::createWithSpriteFrameName("GJ_versusBtn_001.png");
-		sprvers->setScale(scaleToUse);
 
-		// Create a map to associate an ID with its button.
-		std::map<std::string, CCMenuItemSpriteExtra*> idsToBtns = {
-			{ "event-button", CCMenuItemSpriteExtra::create(sprev, this, menu_selector(CreatorLayer::onEventLevel)) },
-			{ "map-button", CCMenuItemSpriteExtra::create(sprmap, this, menu_selector(CreatorLayer::onAdventureMap)) },
-			{ "versus-button", CCMenuItemSpriteExtra::create(sprvers, this, menu_selector(CreatorLayer::onMultiplayer)) }
+		// Create a map to associate an ID with its new sprite.
+		std::map<std::string, CCSprite*> idsToBtns = {
+			{ "event-button", sprev },
+			{ "map-button", sprmap },
+			{ "versus-button", sprvers }
 		};
 		
-		// Iterate on the map to create the buttons and put them on the menu.
+		// Iterate on the map to change the sprite of the buttons.
 		for (auto pair = idsToBtns.begin(); pair != idsToBtns.end(); pair++) {
 			auto id = pair->first.c_str();
 			auto superExpertLoaded = ((strcmp("versus-button", id) == 0) && (Loader::get()->isModLoaded("xanii.super_expert")));
 
 			if (!menu->getChildByID(id)) continue; // Avoid crash if child not found.
 
-			auto btn = menu->getChildByID(id);
-			auto evx = btn->getPositionX();
-			auto evy = btn->getPositionY();
+			auto btn = typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID(id));
+			auto contentSize = btn->getContentSize();
+			auto existingSprite = getChildOfType<CCSprite>(btn, 0);
+
+			auto scale = existingSprite->getScale();
+			pair->second->setScale(scale);
 
 			if (!superExpertLoaded) {
-				btn->removeFromParent();
-			}
-
-			auto saidBtn = pair->second;
-			saidBtn->setID(id);
-			saidBtn->setPosition({ evx, evy });
-
-			if (!superExpertLoaded) {
-				menu->addChild(saidBtn);
+				btn->setNormalImage(pair->second);
 			};
-		}
+
+			btn->setContentSize(contentSize);
+
+		};
+
 		return true;
-	}
+	};
 };
