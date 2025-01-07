@@ -1,3 +1,12 @@
+# v1.2.1
+
+* Updated to 2.2074
+* Added tags to the mod description
+
+# v1.2.0
+
+* Fixed a bug where the buttons would reorder.
+
 # v1.1.3
 
 * Update to Geode 3.0.0. I have no idea if this is useful or not but I'm doing it anyway.

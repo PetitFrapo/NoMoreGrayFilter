@@ -19,13 +19,11 @@ class $modify(CreatorLayer) {
 		//auto scaleToUse = getChildOfType<CCSprite>(getChildOfType<CCMenuItemSpriteExtra>(menu, 0), 0)->getScale();
 
 		// Create the sprites for the buttons.
-		auto sprev = CCSprite::createWithSpriteFrameName("GJ_eventBtn_001.png");
 		auto sprmap = CCSprite::createWithSpriteFrameName("GJ_mapBtn_001.png");
 		auto sprvers = CCSprite::createWithSpriteFrameName("GJ_versusBtn_001.png");
 
 		// Create a map to associate an ID with its new sprite.
 		std::map<std::string, CCSprite*> idsToBtns = {
-			{ "event-button", sprev },
 			{ "map-button", sprmap },
 			{ "versus-button", sprvers }
 		};
@@ -39,7 +37,9 @@ class $modify(CreatorLayer) {
 
 			auto btn = typeinfo_cast<CCMenuItemSpriteExtra*>(menu->getChildByID(id));
 			auto contentSize = btn->getContentSize();
-			auto existingSprite = getChildOfType<CCSprite>(btn, 0);
+			auto existingSprite = btn->getChildByType<CCSprite*>(0);
+
+			if (!existingSprite) continue; // Better safe than sorry.
 
 			auto scale = existingSprite->getScale();
 			pair->second->setScale(scale);
